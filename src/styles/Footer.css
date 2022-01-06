@@ -47,5 +47,6 @@
 
 
 .disabled-link {
-    pointer-events: none;
+    /* pointer-events: none; */
+    cursor: pointer;
 }

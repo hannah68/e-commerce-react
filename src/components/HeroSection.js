@@ -1,4 +1,5 @@
 import '../styles/Home.css';
+import { Link } from "react-router-dom"
 
 const HeroSection = () => {
     return (
@@ -8,9 +9,8 @@ const HeroSection = () => {
                     <h1 className="hero-section__text--title">
                             The unique furniture for your special house
                     </h1>
-                    <button className="hero-section__text--btn">
-                            Shop Now
-                    </button>
+
+                    <Link to='/products' className="hero-section__text--btn">Shop Now</Link>
                 </div>
             </div>
             <div className="hero-section__img">

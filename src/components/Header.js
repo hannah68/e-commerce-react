@@ -8,7 +8,9 @@ const Header = () => {
             <nav className="navbar-container">
                 <div className="navbar">
                     <div className="navbar__logo">
-                        <img src="../public/assets/images/logo.svg" alt="logo"/>
+                        <Link to='/'>
+                            <img src="./assets/images/logo.svg" alt="logo"/>
+                        </Link>
                     </div>
                     
                     <ul className="navbar__lists">
@@ -28,7 +30,9 @@ const Header = () => {
 
                     <div className="navbar__icon">
                         <div className="basket-num"></div>
-                        <span><FaShoppingCart/></span>
+                        <Link to='/basket'>
+                            <span><FaShoppingCart/></span>
+                        </Link>
                     </div>
                 </div>
             </nav>

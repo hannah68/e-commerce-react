@@ -36,8 +36,9 @@
 .navbar__icon{
     position: relative;
 }
-.navbar__icon span i {
+.navbar__icon span{
     font-size: 2.5rem;
+    color: #000;
 }
 
 .basket-num{
