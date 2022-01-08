@@ -7,7 +7,59 @@ import {APIEndpoints} from '../config';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [randomProducts, setRandomProducts] = useState([]);
+    const [priceValue, setPriceValue] = useState(1000)
+    const [filterData, setFilterData] = useState({
+        collection : [],
+        category : [],
+        color : [],
+    })
     
+
+    const handleFilterChange = (e, filterName) => {
+        if(filterData[filterName].includes(e.target.name)){
+            let previousfilterNameArr = [...filterData[filterName]];
+            const updatedfilterNameArr = previousfilterNameArr.filter(el => el !== e.target.name);
+            setFilterData({...filterData, [filterName]: updatedfilterNameArr})
+        }else{
+            setFilterData({...filterData, [filterName]: [...filterData[filterName], e.target.name]})
+        }
+    }
+    
+
+
+    const submitFilterFormHandler = (e) => {
+        e.preventDefault();
+
+        const filteredArr = products.filter(el => {
+            if(filterData.collection.includes(el.collection) && 
+                filterData.color.includes(el.color) &&
+                filterData.category.includes(el.category) &&
+                el.price <= priceValue){
+                return el
+            }
+        })
+
+        console.log('filteredArr', filteredArr);
+        setRandomProducts(filteredArr)
+
+    }
+
+    const handleFilterPrice = (e) => {
+        setPriceValue(e.target.value)
+    }
+
+
+    const clearAllFilterHandler = () => {
+        setFilterData({
+            collection : [],
+            category : [],
+            color : [],
+        });
+        setPriceValue(1000);
+        window.location.reload();
+
+    }
 
      // create random product for product section=================
     const randomFnForProducts = (num) => {
@@ -23,27 +75,38 @@ const Shop = () => {
         const fetchProducts = async () => {
             const res = await fetch(APIEndpoints.shop);
             const data = await res.json();
+            setProducts(data);
+
             const productArrId = randomFnForProducts(42);
-           
             const cleanData = data.filter(item => {
                 return productArrId.includes(item.id)
             })
-            setProducts(cleanData)
+            setRandomProducts(cleanData)
         }
         fetchProducts()
     }, [])
 
+    
     return (
         <div className="shop-section">
             <SearchShop/>
 
             <section className='container'>
                 <div className="filter-container">
-                    <FilterProducts/>
+                    <FilterProducts 
+                        setFilterData={setFilterData} 
+                        filterData={filterData} 
+                        products={products}
+                        handleFilterChange={handleFilterChange}
+                        handleFilterPrice={handleFilterPrice}
+                        priceValue={priceValue}
+                        submitFilterFormHandler={submitFilterFormHandler}
+                        clearAllFilterHandler={clearAllFilterHandler}
+                    />
                 </div>
 
                 <div className="product-container">
-                    {products.map((item, index) => {
+                    {randomProducts.map((item, index) => {
                         return <Product key={index} item={item}/>
                     })}
                 </div>

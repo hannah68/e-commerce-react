@@ -1,74 +1,79 @@
 import '../styles/Shop.css'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {FaChevronDown} from "react-icons/fa"
 import FilterCollectionMenu from './FilterCollectionMenu'
 import FilterColorMenu from './FilterColorMenu'
 import FilterCategoryMenu from './FilterCategoryMenu'
-import '../styles/Shop.css'
+import FilterPrice from './FilterPrice'
 
 const FilterProducts = (props) => {
-    const [collection, setCollection] = useState([]);
+    const {
+        filterData, 
+        handleFilterChange, 
+        handleFilterPrice, 
+        priceValue, 
+        submitFilterFormHandler,
+        clearAllFilterHandler
+    } = props;
+
+    const collectionNames = ['Spring-Summer', 'Autumn-Winter'];
+    const colorNames =  ['Pink', 'Blue', 'White', 'Green', 'Beige', 'Black', 'Brown', 'Yellow', 'Grey','Lavender'];
+    const categoryNames = ['Chair', 'Table', 'Bed','Lamp','Sofa'];
+    
+    
     const [collectionMenuOpen, setCollectionMenuOpen] = useState(false);
     const [colorMenuOpen, setColorMenuOpen] = useState(false);
     const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
 
-    const sortProducts = (sort) => {
-
-    }
-
-    const filterProducts = () => {
-        
-    }
+   
  
     return (
         <>
             <div className="clear-container">
                 <h2>Filtered by</h2>
-                <button className="clear-btn">Clear All</button>
+                <button className="clear-btn" onClick={clearAllFilterHandler}>Clear All</button>
             </div>
 
-            <form className="filter__collection">
+            <form className="filter__collection" onSubmit={submitFilterFormHandler}>
                 {/* collection section */}
                 <div className={collectionMenuOpen ? "collection__menu removeBorder": "collection__menu"}>
                     <span>Collection</span>
                     <span onClick={() => setCollectionMenuOpen(!collectionMenuOpen)}><FaChevronDown/></span>
                 </div>
-                {collectionMenuOpen && <FilterCollectionMenu/>}
+                {collectionMenuOpen && <FilterCollectionMenu 
+                    handleFilterChange={handleFilterChange}
+                    collectionNames={collectionNames}
+                    filterData={filterData}
+                    />}
 
                 {/* color section */}
                 <div className={colorMenuOpen ? "color__menu removeBorder" : "color__menu"}>
                     <span>Color</span>
                     <span onClick={() => setColorMenuOpen(!colorMenuOpen)}><FaChevronDown/></span>
                 </div>
-                {colorMenuOpen && <FilterColorMenu/>}
+                {colorMenuOpen && <FilterColorMenu 
+                    colorNames={colorNames}
+                    handleFilterChange={handleFilterChange}
+                    filterData={filterData}
+                    />}
 
                 {/* category section */}
                 <div className={categoryMenuOpen ? "category__menu removeBorder" : "category__menu"}>
                     <span>Category</span>
                     <span onClick={() => setCategoryMenuOpen(!categoryMenuOpen)}><FaChevronDown/></span>
                 </div>
-                {categoryMenuOpen && <FilterCategoryMenu/>}
+                {categoryMenuOpen && <FilterCategoryMenu
+                    categoryNames={categoryNames}
+                    handleFilterChange={handleFilterChange}
+                    filterData={filterData}
+                    />}
 
                 {/* price section */}
                 <div className="price__menu">
                     <span className="price-name">Price Range</span>
                 </div>
-                <div className="price__list">
-                    <div className="range-container">
-                        <input type="range" id="min-price" name="min-price" value="0" min="0" max="1000" step="1"/>
-                        <input type="range" id="max-price" name="max-price" value="1000" min="0" max="1000" step="1"/>
-                    </div>
-                    <div className="price-text">
-                        <div className="min-text">
-                            <span>£</span>
-                            <input type="number" value="0" min="0" max="1000" id="min-num"/>
-                        </div>
-                        <div className="max-text">
-                            <span>£</span>
-                            <input type="number" value="1000" min="0" max="1000" id="max-num"/>
-                        </div>
-                    </div>
-                </div>
+                <FilterPrice handleFilterPrice={handleFilterPrice} priceValue={priceValue}/>
+
                 <button type="submit" className="search-btn">Search</button>
             </form>
         </>

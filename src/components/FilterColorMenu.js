@@ -1,15 +1,25 @@
 import React from 'react'
 import '../styles/Shop.css'
 
-const FilterColorMenu = () => {
-    const colorNames = ['Pink', 'Blue', 'White', 'Green', 'Beige', 'Black', 'Brown', 'Yellow', 'Grey','Lavender'];
+const FilterColorMenu = (props) => {
+    const {colorNames, filterData, handleFilterChange} = props;
+
+    const checkCheckboxHandler = (colorName) => {
+        return filterData.color.includes(colorName) ? true : false;
+    }
 
     return (
         <div className="color__list">
             {colorNames.map((colorName, index) => {
                 return(
                     <div key={index}>
-                        <input type="checkbox" id={colorName}/>
+                        <input 
+                            type="checkbox" 
+                            id={colorName} 
+                            name={colorName} 
+                            onChange={(e) => handleFilterChange(e, 'color')}
+                            checked={checkCheckboxHandler(colorName)}
+                        />
                         <label htmlFor={colorName}>{colorName}</label>
                     </div>
                 )
