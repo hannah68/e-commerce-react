@@ -64,10 +64,16 @@ main{
     color:  #FF9529;
 }
 .product__btn{
-    border: none;
-    outline: none;
+    font-size: 1.3rem;
+    text-decoration: none;
+    background-color:#EDEAEA;
+    color: #000;
+    border: 1px solid rgb(27, 27, 27);
+    /* outline: none; */
     padding: 1rem;
     cursor: pointer;
+    text-align: center;
+    box-shadow:0 3px 2px #bbb;border:1px solid #bbb;
 }
 /* product info================== */
 .product-item{

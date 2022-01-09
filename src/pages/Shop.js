@@ -7,13 +7,14 @@ import {APIEndpoints} from '../config';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
     const [randomProducts, setRandomProducts] = useState([]);
-    const [priceValue, setPriceValue] = useState(1000)
+    const [priceValue, setPriceValue] = useState(1000);
     const [filterData, setFilterData] = useState({
         collection : [],
         category : [],
         color : [],
-    })
+    });
     
 
     const handleFilterChange = (e, filterName) => {
@@ -49,6 +50,26 @@ const Shop = () => {
         setPriceValue(e.target.value)
     }
 
+    const submitSearchHandler = (e) => {
+        e.preventDefault();
+
+        const filteredData = products.filter(el => {
+            if(el.category === searchValue || el.title === searchValue){
+                return el
+            }
+        })
+        console.log(filteredData);
+        setRandomProducts(filteredData);
+        setSearchValue('');
+    }
+
+    const searchFilterHandler = (e) => {
+        const value = e.target.value
+        const capitalize = value.charAt(0).toUpperCase();
+        const inputValue = capitalize +  value.slice(1);
+        setSearchValue(inputValue);
+    }
+
 
     const clearAllFilterHandler = () => {
         setFilterData({
@@ -58,7 +79,19 @@ const Shop = () => {
         });
         setPriceValue(1000);
         window.location.reload();
+    }
 
+    const sortByHighestHandler = () => {
+        const newArr = [...randomProducts];
+        const sortedArr = newArr.sort((a,b) => b.price - a.price);
+        setRandomProducts(sortedArr);
+    }
+
+    const sortByLowestHandler = () => {
+        const newArr = [...randomProducts];
+        const sortedArr = newArr.sort((a,b) => a.price - b.price);
+        console.log(sortedArr);
+        setRandomProducts(sortedArr);
     }
 
      // create random product for product section=================
@@ -89,7 +122,12 @@ const Shop = () => {
     
     return (
         <div className="shop-section">
-            <SearchShop/>
+            <SearchShop 
+                searchValue={searchValue} 
+                searchFilterHandler={searchFilterHandler}
+                submitSearchHandler={submitSearchHandler}
+                sortByHighestHandler={sortByHighestHandler}
+                sortByLowestHandler={sortByLowestHandler}/>
 
             <section className='container'>
                 <div className="filter-container">

@@ -1,10 +1,11 @@
 import '../styles/Shop.css'
 
-const SortProducts = () => {
+const SortProducts = (props) => {
+    const {sortByLowestHandler, sortByHighestHandler} = props;
     return (
         <ul className="sort-container">
-            <li className="lowest">Lowest Price</li>
-            <li className="highest">Highest Price</li>
+            <li className="lowest" onClick={sortByLowestHandler}>Lowest Price</li>
+            <li className="highest" onClick={sortByHighestHandler}>Highest Price</li>
         </ul>
     )
 }

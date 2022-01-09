@@ -20,8 +20,11 @@
     font-size: 2rem;
 }
 
-.search__input{
+.search__form{
     width: 70%;
+}
+.search__input{
+    width: 100%;
     border: none;
     outline: none;
     padding: 1rem;

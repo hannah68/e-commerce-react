@@ -1,4 +1,5 @@
 import '../styles/Shop.css'
+import { Link } from "react-router-dom"
 import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa'
 
 const Product = (props) => {
@@ -6,7 +7,7 @@ const Product = (props) => {
 
     // create random class============================
     const randomStar = () => {
-        const starClass = Math.floor(Math.random()*2)+1;
+        const starClass = Math.floor( Math.random() * 2 ) + 1;
         return starClass === 1 ? <FaStarHalfAlt/> : <FaRegStar/>;
     }
 
@@ -24,7 +25,9 @@ const Product = (props) => {
                 </div>
                 <p className="product__price">£{item.price}</p>
             </div>
-            <button className="product__btn">Add to bag</button>
+            <Link className="product__btn" to={`/products/${item.id}`} state={{item}}>
+               Add to bag
+            </Link>
         </div>
     )
 }
