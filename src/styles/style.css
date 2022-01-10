@@ -68,12 +68,13 @@ main{
     text-decoration: none;
     background-color:#EDEAEA;
     color: #000;
-    border: 1px solid rgb(27, 27, 27);
+    /* border: 1px solid rgb(133, 133, 133); */
     /* outline: none; */
     padding: 1rem;
     cursor: pointer;
     text-align: center;
-    box-shadow:0 3px 2px #bbb;border:1px solid #bbb;
+    box-shadow:0 3px 2px #bbb;
+    border:1px solid #bbb;
 }
 /* product info================== */
 .product-item{
@@ -561,3 +562,4 @@ main{
         width: 350px;
     }
 }
+

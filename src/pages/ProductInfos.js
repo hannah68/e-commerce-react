@@ -2,9 +2,12 @@ import {useEffect, useState} from 'react'
 import {FaChevronRight, FaChevronLeft} from "react-icons/fa"
 import ProductInfo from '../components/ProductInfo'
 import {useLocation} from "react-router-dom";
+import {APIEndpoints} from '../config'
 
-const ProductInfos = (props) => {
+const ProductInfos = () => {
+    const [submit, setSubmit] = useState(false);
     const [product, setProduct] = useState({});
+    const [quantity, setQuantity] = useState(0);
     const location = useLocation();
 
     useEffect(() => {
@@ -12,7 +15,30 @@ const ProductInfos = (props) => {
             const { item } = location.state;
             setProduct(item);
         }
-    }, [location])
+    }, [location]);
+
+    useEffect(() => {
+        const postBasketData = async () => {
+            await fetch(APIEndpoints.basket, {
+                method: 'POST',
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify({...product, quantity: quantity})
+            })
+        }
+        if(submit){
+            postBasketData()
+        }
+        setSubmit(false);
+        setQuantity(0);
+    }, [submit])
+
+
+
+     const quantityHandler = (e) => {
+        setQuantity(e.target.value);
+     }
 
     return (
         <div className="product-info-section">
@@ -33,8 +59,18 @@ const ProductInfos = (props) => {
                     <h3 className="productInfo-price">£{product.price}</h3>
                     <ProductInfo/>
                     <div className="productInfo-select">
-                        <input type="number" name="num" id="num" className="num"/>
-                        <button className="add-btn" id="27">Add to basket</button>
+                        <input 
+                            type="number" 
+                            name="num" 
+                            className="num"
+                            value={quantity}
+                            onChange={quantityHandler}
+                            />
+                        
+                        <button 
+                            className="add-btn" 
+                            onClick={() => setSubmit(true)}
+                        >Add to basket</button>
                     </div>
                 </div>
             </section>

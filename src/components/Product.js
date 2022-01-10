@@ -17,7 +17,7 @@ const Product = (props) => {
             <p className="product__name">{item.title}</p>
             <div className="product__stars">
                 <div className="stars">
-                <span><FaStar/></span>
+                    <span><FaStar/></span>
                     <span><FaStar/></span>
                     <span><FaStar/></span>
                     <span><FaStar/></span>
