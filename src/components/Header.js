@@ -2,7 +2,10 @@ import { Link } from "react-router-dom"
 import '../styles/Header.css';
 import {FaShoppingCart} from 'react-icons/fa'
 
-const Header = () => {
+const Header = (props) => {
+    const {shoppingCart} = props;
+    const className = shoppingCart.length === 0 ? 'basket-num hide' : 'basket-num';
+
     return (
         <header>
             <nav className="navbar-container">
@@ -29,8 +32,10 @@ const Header = () => {
                     </ul>
 
                     <div className="navbar__icon">
-                        <div className="basket-num"></div>
                         <Link to='/basket'>
+                            <div className={className}>
+                                {shoppingCart.length}
+                            </div>
                             <span><FaShoppingCart/></span>
                         </Link>
                     </div>

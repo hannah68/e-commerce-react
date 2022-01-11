@@ -1,0 +1,228 @@
+/* product info================== */
+.product-item{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    width: 140rem;
+    margin: 8rem auto;
+}
+.productImg-container{
+    grid-column: 1/2;
+    
+}
+.productImg-container img{
+    width: 72rem;
+    height: 50rem;
+}
+.small-images{
+    width: 72rem;
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.small-images img{
+    width: 10rem;
+    height: 8rem;
+}
+
+.productInfo-container{
+    grid-column: 2/-1;
+    font-size: 2rem;
+}
+.productInfo-title,
+.productInfo-price{
+    margin-bottom: 1rem;
+}
+
+.productInfo-price{
+    margin-top: 1rem;
+}
+
+.productInfo-text{
+    line-height: 1.7;
+}
+
+.productInfo-colors{
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.productInfo-colors .circle{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border:1px solid #000;
+}
+.productInfo-size{
+    padding: 2rem;
+}
+.productInfo-select{
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-top: 4rem;
+    font-size: 2rem;
+}
+
+.productInfo-select input{
+    width: 50%;
+    padding: 1rem;
+}
+.productInfo-select button{
+    width: 70%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.stars span{
+    cursor: pointer;
+}
+
+.Blue{
+    background-color: blue;
+}
+.Brown{
+    background-color: brown;
+}
+.Green{
+    background-color: green;
+}
+.Black{
+    background-color: black;
+}
+.Beige{
+    background-color: beige;
+}
+.Pink{
+    background-color: pink;
+}
+.Yellow{
+    background-color: yellow;
+}
+.Grey{
+    background-color: grey;
+}
+.Lavender{
+    background-color: lavender;
+}
+
+/* product review form */
+.review-form{
+    width: 140rem;
+    font-size: 2rem;
+    margin: 1rem auto;
+}
+
+.review-container{
+    width: 72rem;
+    background-color: #efefef;
+    padding: 2rem;
+}
+
+.user-name{
+    margin: 2rem 0;
+    position: relative;
+    padding-right: 1rem;
+}
+.user-input{
+    width: 90%;
+    padding:1rem;
+    outline: none;
+    border: none;
+    margin-left: 5rem;
+}
+
+.user-name span{
+    width: 4.5rem;
+    padding: 0.4rem 0.5rem;
+    font-weight: normal;
+    line-height: 1.25;
+    color: #2e2e2e;
+    text-align: center;
+    background-color: #cdcdce;
+    border-radius: 0.25rem;
+    position: absolute;
+    left: 5px;
+}
+
+.review-stars{
+    margin: 1rem 0;
+}
+
+.review-title{
+    margin-left: .5rem;
+}
+
+.feedback{
+    position: relative;
+}
+
+.feedback-text{
+    margin-left: 1rem;
+}
+
+.user-text-review{
+    margin:1rem 0;
+}
+.user-text-review span{
+    width: 45px;
+    padding: 2.5rem 0.5rem;
+    font-weight: normal;
+    line-height: 1.25;
+    color: #2e2e2e;
+    text-align: center;
+    background-color: #cdcdce;
+    border-radius: 0.25rem;
+    position: absolute;
+    left: 1rem;
+}
+
+.user-text-review textarea{
+    margin-left: 5rem;
+    border: none;
+    outline: none;
+    padding: 0 1.5rem;
+}
+
+.review-btn{
+    cursor: pointer;
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    margin-left: 1rem;
+    background-color: #cdcdce;
+    border: none;
+    outline: none;
+    margin-top: 2rem;
+    transition: all .2s ease-in-out; 
+    border-radius: .2rem;
+}
+
+.review-btn:hover{
+    background-color: grey;
+    color: rgb(230, 230, 230);
+}
+
+.rating{
+    margin-left: 1rem;
+}
+
+/* review=========== */
+.review{
+    width: 72rem;
+    font-size: 2rem;
+}
+
+.review-header,
+.review-body{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.review-body-img{
+    width: 5rem;
+    height: 5rem;
+}

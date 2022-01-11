@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa'
 import '../styles/Home.css';
 
@@ -26,7 +26,9 @@ const FeaturedItem = (props) => {
                     </div>
                     <p>£{item.price}</p>
                 </div>
-                <button className="sub-img__btn">more details</button>
+                <Link to={`/products/${item.id}`} state={{item}}>
+                    <button className="sub-img__btn">more details</button>
+                </Link>
             </div>
         </div>
     )

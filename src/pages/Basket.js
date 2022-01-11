@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import {APIEndpoints} from '../config'
 import CartItem from '../components/CartItem';
 import EmptyBasket from '../components/EmptyBasket';
+import TotalCart from '../components/TotalCart';
 
 
-const Basket = () => {
-    const [shoppingCart, setShoppingCart] = useState([]);
+const Basket = (props) => {
+    const {setShoppingCart, shoppingCart} = props;
     const [deletedItem, setDeletedItem] = useState(null);
+    const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState(0);
     let navigate = useNavigate();
 
@@ -33,7 +35,7 @@ const Basket = () => {
         const foundItem = shoppingCart.find(el => el.id === item.id);
         if(foundItem.quantity > 1){
             foundItem.quantity -= 1
-            setShoppingCart(shoppingCart.map(el => el.id === item.id ? foundItem : el))
+            setShoppingCart(shoppingCart.map(el => el.id === item.id ? foundItem : el));
         }
         else if(foundItem.quantity <= 1){
             setShoppingCart(shoppingCart.filter(el => el.id !== item.id));
@@ -64,7 +66,6 @@ const Basket = () => {
 
 
 
-    console.log('shopping cart', shoppingCart);
 
     return (
 			<div className="shopping-cart">
@@ -72,29 +73,28 @@ const Basket = () => {
 					Shopping Cart <span>: {shoppingCart.length} items</span>
 				</h1>
                 {shoppingCart.length < 1 ?  <EmptyBasket/> : 
-
-                    <div className="cart-section">
-                    <div className="row header-row">
-                        <p className='header'>product</p>
-                        <p className='header'>Unit price</p>
-                        <p className='header'>Quantity</p>
-                        <p className='header'>Total</p>
-                    </div>
-                    <div className="cart">
-                        {shoppingCart.map((item, index) => {
-                            return <CartItem  
-                                        key={index} 
-                                        item={item}
-                                        total={total}
-                                        removeItem={removeItem}
-                                        addItem={addItem}
-                                    />
-                        })}
-                    </div>
-                    </div>
+                    <>
+                        <div className="cart-section">
+                            <div className="row header-row">
+                                <p className='header'>product</p>
+                                <p className='header'>Unit price</p>
+                                <p className='header'>Quantity</p>
+                                <p className='header'>Total</p>
+                            </div>
+                            <div className="cart">
+                                {shoppingCart.map((item, index) => {
+                                    return <CartItem  
+                                                key={index} 
+                                                item={item}
+                                                removeItem={removeItem}
+                                                addItem={addItem}
+                                            />
+                                })}
+                            </div>
+                        </div>
+                        <TotalCart total={total} shoppingCart={shoppingCart}/>
+                    </>
                 }
-                
-				
 			</div>
 		);
 }

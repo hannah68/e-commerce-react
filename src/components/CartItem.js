@@ -4,7 +4,7 @@ import '../styles/Basket.css'
 
 
 const CartItem = (props) => {
-    const {item, total, addItem, removeItem} = props;
+    const {item, addItem, removeItem} = props;
 
     return (
         <div className="row body-row">
@@ -27,11 +27,11 @@ const CartItem = (props) => {
 
             <div className="quantity-container">
                 <button className="popup-minus" onClick={() => addItem(item)}><FaPlus/></button>
-                <input className="quantity" type="text" value={item.quantity}/>
+                <div className="quantity">{item.quantity}</div>
                 <button className="popup-plus" onClick={() => removeItem(item)}><FaMinus/></button>
             </div>
 
-            <p>£{total}</p>
+            <p>£{(item.quantity * item.price).toFixed(2)}</p>
         </div>
        
     )

@@ -101,4 +101,5 @@
 .sub-img__btn{
     cursor: pointer;
     padding: 5px 0;
+    width: 100%;
 }

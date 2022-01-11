@@ -51,8 +51,9 @@
     position: absolute;
     bottom: 3rem;
     left: 2rem;
+}
+
+.basket-num.hide{
     display: none;
 }
-.basket-num.show{
-    display: block;
-}
+
