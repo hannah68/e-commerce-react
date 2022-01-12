@@ -1,15 +1,9 @@
 import { Link } from "react-router-dom"
-import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa'
 import '../styles/Home.css';
+import { randomStar, starIcons } from "../HelperFunctions";
 
 const FeaturedItem = (props) => {
-    const {item} = props;
-
-    // create random class============================
-    const randomStar = () => {
-        const starClass = Math.floor(Math.random()*2)+1;
-        return starClass === 1 ? <FaStarHalfAlt/> : <FaRegStar/>;
-    }
+    const { item } = props;
 
     return (
         <div className="features-item">
@@ -18,10 +12,9 @@ const FeaturedItem = (props) => {
                 <p className="sub-img__title">{item.title}</p>
                 <div className="sub-img__star">
                     <div className="stars">
-                        <span><FaStar/></span>
-                        <span><FaStar/></span>
-                        <span><FaStar/></span>
-                        <span><FaStar/></span>
+                        {starIcons.map((star, index) => {
+                            return <span key={index}>{star}</span>
+                        })}
                         <span>{randomStar()}</span>
                     </div>
                     <p>£{item.price}</p>

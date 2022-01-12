@@ -1,5 +1,4 @@
 import '../styles/Shop.css'
-import {useState, useEffect} from 'react'
 
 const FilterPrice = (props) => {
     const {handleFilterPrice, priceValue} = props;

@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
 import '../styles/Basket.css'
-// import '../styles/style.css'
 import { useNavigate } from "react-router-dom";
 import {APIEndpoints} from '../config'
 import CartItem from '../components/CartItem';
@@ -11,7 +10,6 @@ import TotalCart from '../components/TotalCart';
 const Basket = (props) => {
     const {setShoppingCart, shoppingCart} = props;
     const [deletedItem, setDeletedItem] = useState(null);
-    const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState(0);
     let navigate = useNavigate();
 
@@ -63,8 +61,6 @@ const Basket = (props) => {
             deleteItemFromBasket();
         }
     }, [deletedItem]);
-
-
 
 
     return (

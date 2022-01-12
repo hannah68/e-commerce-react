@@ -12,7 +12,7 @@ const Header = (props) => {
                 <div className="navbar">
                     <div className="navbar__logo">
                         <Link to='/'>
-                            <img src="./assets/images/logo.svg" alt="logo"/>
+                            <img src="../assets/images/logo.svg" alt="logo"/>
                         </Link>
                     </div>
                     

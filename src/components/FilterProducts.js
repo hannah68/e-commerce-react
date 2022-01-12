@@ -6,6 +6,7 @@ import FilterColorMenu from './FilterColorMenu'
 import FilterCategoryMenu from './FilterCategoryMenu'
 import FilterPrice from './FilterPrice'
 
+
 const FilterProducts = (props) => {
     const {
         filterData, 
@@ -16,16 +17,11 @@ const FilterProducts = (props) => {
         clearAllFilterHandler
     } = props;
 
-    const collectionNames = ['Spring-Summer', 'Autumn-Winter'];
-    const colorNames =  ['Pink', 'Blue', 'White', 'Green', 'Beige', 'Black', 'Brown', 'Yellow', 'Grey','Lavender'];
-    const categoryNames = ['Chair', 'Table', 'Bed','Lamp','Sofa'];
-    
     
     const [collectionMenuOpen, setCollectionMenuOpen] = useState(false);
     const [colorMenuOpen, setColorMenuOpen] = useState(false);
     const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
 
-   
  
     return (
         <>
@@ -42,7 +38,6 @@ const FilterProducts = (props) => {
                 </div>
                 {collectionMenuOpen && <FilterCollectionMenu 
                     handleFilterChange={handleFilterChange}
-                    collectionNames={collectionNames}
                     filterData={filterData}
                     />}
 
@@ -52,7 +47,6 @@ const FilterProducts = (props) => {
                     <span onClick={() => setColorMenuOpen(!colorMenuOpen)}><FaChevronDown/></span>
                 </div>
                 {colorMenuOpen && <FilterColorMenu 
-                    colorNames={colorNames}
                     handleFilterChange={handleFilterChange}
                     filterData={filterData}
                     />}
@@ -63,7 +57,6 @@ const FilterProducts = (props) => {
                     <span onClick={() => setCategoryMenuOpen(!categoryMenuOpen)}><FaChevronDown/></span>
                 </div>
                 {categoryMenuOpen && <FilterCategoryMenu
-                    categoryNames={categoryNames}
                     handleFilterChange={handleFilterChange}
                     filterData={filterData}
                     />}

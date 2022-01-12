@@ -1,9 +1,10 @@
-import React from 'react'
 import '../styles/Shop.css'
+import {categoryNames} from '../HelperFunctions'
 
 const FilterCategoryMenu = (props) => {
-    const {categoryNames, handleFilterChange, filterData} = props;
+    const {handleFilterChange, filterData} = props;
 
+    // chec kCheckbox Handler ===============================
     const checkCheckboxHandler = (categoryName) => {
         return filterData.category.includes(categoryName) ? true : false;
     }

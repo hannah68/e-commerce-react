@@ -1,6 +1,5 @@
 import {GrDeliver} from 'react-icons/gr'
 import {BsShop} from 'react-icons/bs'
-import CartItem from './CartItem';
 
 const TotalCart = (props) => {
     const {total, shoppingCart} = props;

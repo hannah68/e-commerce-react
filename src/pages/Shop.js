@@ -4,6 +4,7 @@ import Product from '../components/Product'
 import SearchShop from '../components/SearchShop'
 import '../styles/Shop.css'
 import {APIEndpoints} from '../config';
+import {randomFnForProducts} from '../HelperFunctions'
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ const Shop = () => {
     });
     
 
+    // handle filter changes================================================
     const handleFilterChange = (e, filterName) => {
         if(filterData[filterName].includes(e.target.name)){
             let previousfilterNameArr = [...filterData[filterName]];
@@ -26,12 +28,10 @@ const Shop = () => {
             setFilterData({...filterData, [filterName]: [...filterData[filterName], e.target.name]})
         }
     }
-    
 
-
+    // submit Filter Form Handler ============================================
     const submitFilterFormHandler = (e) => {
         e.preventDefault();
-
         const filteredArr = products.filter(el => {
             if(filterData.collection.includes(el.collection) && 
                 filterData.color.includes(el.color) &&
@@ -40,19 +40,18 @@ const Shop = () => {
                 return el
             }
         })
-
         console.log('filteredArr', filteredArr);
         setRandomProducts(filteredArr)
-
     }
 
+    // handle Filter Price ==================================================
     const handleFilterPrice = (e) => {
         setPriceValue(e.target.value)
     }
 
+    // submit Search Handler ================================================
     const submitSearchHandler = (e) => {
         e.preventDefault();
-
         const filteredData = products.filter(el => {
             if(el.category === searchValue || el.title === searchValue){
                 return el
@@ -63,6 +62,7 @@ const Shop = () => {
         setSearchValue('');
     }
 
+    // search Filter Handler===================================================
     const searchFilterHandler = (e) => {
         const value = e.target.value
         const capitalize = value.charAt(0).toUpperCase();
@@ -70,7 +70,7 @@ const Shop = () => {
         setSearchValue(inputValue);
     }
 
-
+    // clear All Filters Handler================================================
     const clearAllFilterHandler = () => {
         setFilterData({
             collection : [],
@@ -81,12 +81,14 @@ const Shop = () => {
         window.location.reload();
     }
 
+    // sort By Highest price Handler=============================================
     const sortByHighestHandler = () => {
         const newArr = [...randomProducts];
         const sortedArr = newArr.sort((a,b) => b.price - a.price);
         setRandomProducts(sortedArr);
     }
 
+    // sort By Lowest price Handler==============================================
     const sortByLowestHandler = () => {
         const newArr = [...randomProducts];
         const sortedArr = newArr.sort((a,b) => a.price - b.price);
@@ -94,22 +96,14 @@ const Shop = () => {
         setRandomProducts(sortedArr);
     }
 
-     // create random product for product section=================
-    const randomFnForProducts = (num) => {
-        let numIndex = []
-        while(numIndex.length < 6){
-            const randomNum = Math.floor(Math.random() * num) + 1;
-            if(numIndex.indexOf(randomNum) === -1) numIndex.push(randomNum);
-        }
-        return numIndex;
-    }
-
+    // use effect for fetching products and displaying on screen==================
     useEffect(() => {
         const fetchProducts = async () => {
             const res = await fetch(APIEndpoints.shop);
             const data = await res.json();
+            // uncleaned data/ all products
             setProducts(data);
-
+            // cleaned data / only show 6 product on screen(based on random number)
             const productArrId = randomFnForProducts(42);
             const cleanData = data.filter(item => {
                 return productArrId.includes(item.id)

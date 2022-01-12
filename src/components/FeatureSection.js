@@ -1,5 +1,4 @@
 import '../styles/Home.css';
-// import { useState, useEffect } from "react";
 import FeaturedItem from './FeaturedItem';
 
 

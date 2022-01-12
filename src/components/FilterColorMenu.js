@@ -1,9 +1,10 @@
-import React from 'react'
 import '../styles/Shop.css'
+import {colorNames} from '../HelperFunctions'
 
 const FilterColorMenu = (props) => {
-    const {colorNames, filterData, handleFilterChange} = props;
+    const {filterData, handleFilterChange} = props;
 
+    // check Checkbox Handler ===============================
     const checkCheckboxHandler = (colorName) => {
         return filterData.color.includes(colorName) ? true : false;
     }

@@ -11,4 +11,5 @@ export class APIEndpoints{
     static shop = `${APIEndpoints.baseUrl}/products`
     static basket = `${APIEndpoints.baseUrl}/basket`
     static contact = `${APIEndpoints.baseUrl}/contact`
+    // static reviews = `${APIEndpoints.baseUrl}/products/:id`
 }

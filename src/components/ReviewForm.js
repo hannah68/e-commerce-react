@@ -1,29 +1,65 @@
-import {FaStar, FaStarHalfAlt, FaRegStar, FaUser, FaPen} from 'react-icons/fa'
-import {useState} from 'react'
+import {FaStar, FaUser, FaPen } from 'react-icons/fa'
+import {MdEmail} from 'react-icons/md'
+import {useState, useEffect} from 'react'
+import {APIEndpoints} from '../config'
 
 const ReviewForm = (props) => {
-    const {product, setReviewInfo, reviewInfo, isSubmitReviewForm, setIsSubmitReviewForm} = props;
-    
-    
-    console.log(reviewInfo);
+    const {
+        setReviewInfo, 
+        reviewInfo, 
+        isSubmitReviewForm, 
+        setIsSubmitReviewForm,
+        product
+    } = props;
 
+    // const [reviews, setReviews] = useState([]);
+
+    // useEffect(() => {
+    //     const postProductReviews = async() => {
+    //         const res = await fetch(`${APIEndpoints.shop}/${product.id}`, {
+    //             method: 'PATCH',
+    //             headers: {
+    //             "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify(reviewInfo)
+    //         })
+    //         const data = res.json()
+    //         console.log(data);
+    //     }
+    //     if(isSubmitReviewForm){
+    //         postProductReviews();
+    //     }
+    // }, [])
+    
+    // reviewerName handler =================================
     const reviewerNameHandler = (e) => {
-        setReviewInfo({...reviewInfo, ReviewerName: e.target.value});
+        setReviewInfo({...reviewInfo, reviewerName: e.target.value});
     }
 
+    // reviewerEmail handler ================================
+    const reviewerEmailHandler = (e) => {
+        setReviewInfo({...reviewInfo, reviewerEmail: e.target.value})
+    }
+
+    // change star handler ==================================
     const changeStarHandler = (star) => {
         const updatedStarArr = reviewInfo.stars.map(el => el.id === star.id ? {...el, name: <FaStar/>} : el);
         setReviewInfo({...reviewInfo, stars: updatedStarArr});
     }
 
+    // feedback handler =======================================
     const feedbackHandler = (e) => {
         setReviewInfo({...reviewInfo, feedback: e.target.value});
     }
 
+    // submit review ==========================================
     const submitReviewFormHandler = (e) => {
         e.preventDefault();
-        setIsSubmitReviewForm(true)
+        let today = new Date().toLocaleDateString();
+        setReviewInfo({...reviewInfo, date: today});
+        setIsSubmitReviewForm(true);
     }
+
 
     return (
         <form className='review-form' onSubmit={submitReviewFormHandler}>
@@ -35,8 +71,18 @@ const ReviewForm = (props) => {
                         type="text" 
                         className='user-input' 
                         placeholder='Enter your name'
-                        value={reviewInfo.ReviewerName}
+                        value={reviewInfo.reviewerName}
                         onChange={reviewerNameHandler}
+                    />
+                </div>
+                <div className="user-email">
+                    <span><MdEmail/></span>
+                    <input 
+                        type="email" 
+                        className='user-input' 
+                        placeholder='Enter your email'
+                        value={reviewInfo.reviewerEmail}
+                        onChange={reviewerEmailHandler}
                     />
                 </div>
                 <div className="rating">
@@ -67,6 +113,7 @@ const ReviewForm = (props) => {
                         ></textarea>
                     </div>
                 </div>
+                
                 <button type='submit' className='review-btn'>Submit</button>
             </div>
         </form>

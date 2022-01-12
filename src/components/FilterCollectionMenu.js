@@ -1,10 +1,11 @@
-import React from 'react'
 import '../styles/Shop.css'
-// import {useState, useEffect} from 'react'
+import {collectionNames} from '../HelperFunctions'
+
 
 const FilterCollectionMenu = (props) => {
-    const {collectionNames, filterData, handleFilterChange} = props;
+    const {filterData, handleFilterChange} = props;
 
+    // check Checkbox Handler ================================
     const checkCheckboxHandler = (collectionName) => {
         return filterData.collection.includes(collectionName) ? true : false;
     }

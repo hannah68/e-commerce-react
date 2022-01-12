@@ -1,17 +1,38 @@
-import React from 'react'
+import { AiOutlineLike } from "react-icons/ai";
 
-const Review = () => {
+const Review = (props) => {
+    const {product, reviewInfo} = props;
+    
+    let style = {fontSize: '1.5rem', marginRight: '8px'}
+
     return (
-        <div className='review'>
-            <div className="review-header">
-                <p className="review-header-name">hanna naderi</p>
-                <p className="review-header-star">star</p>
-                <p className="review-header-date">06/09/2021</p>
-            </div>
-            <div className="review-body">
-                <img src="../assets/images/sofa1.jpg" alt="" className='review-body-img'/>
-                <p className="review-body-text">text</p>
-                <button className="review-body-btn">helpful</button>
+        <div className='review-section'>
+            <div className="review">
+                <div className="review-header">
+                    <p className="review-header-name">
+                        {reviewInfo.reviewerName}
+                    </p>
+                    <p className="review-header-star">
+                        {reviewInfo.stars.map(el => el.name)}
+                    </p>
+                    <p className="review-header-date">
+                        {reviewInfo.date}
+                    </p>
+                </div>
+                <div className="review-body">
+                    <img 
+                        src={`.${product.img}`} 
+                        alt={product.title} 
+                        className='review-body-img'
+                    />
+                    <p className="review-body-text">
+                        {reviewInfo.feedback}
+                    </p>
+                    <button className="review-body-btn">
+                        <span><AiOutlineLike style={style}/></span>
+                        helpful
+                    </button>
+                </div>
             </div>
         </div>
     )

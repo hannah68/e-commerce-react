@@ -1,6 +1,6 @@
-import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa'
 import {FaPlus, FaMinus} from "react-icons/fa"
 import '../styles/Basket.css'
+import {starIcons, randomStar} from '../HelperFunctions'
 
 
 const CartItem = (props) => {
@@ -13,11 +13,10 @@ const CartItem = (props) => {
                     <div className="info-cart">
                         <p>{item.title}</p>
                         <div className="cart-stars">
-                            <span><FaStar/></span>
-                            <span><FaStar/></span>
-                            <span><FaStar/></span>
-                            <span><FaStar/></span>
-                            <span><FaStar/></span>
+                            {starIcons.map((star, index) => {
+                                return <span key={index}>{star}</span>
+                            })}
+                            <span>{randomStar()}</span>
                         </div>
                         <p className='delivery'>Estimated dispatch within 5 working days</p>
                     </div>
