@@ -21,18 +21,14 @@ const CartItem = (props) => {
                         <p className='delivery'>Estimated dispatch within 5 working days</p>
                     </div>
             </div>
-
             <p>£{item.price}</p>
-
             <div className="quantity-container">
-                <button className="popup-minus" onClick={() => addItem(item)}><FaPlus/></button>
-                <div className="quantity">{item.quantity}</div>
                 <button className="popup-plus" onClick={() => removeItem(item)}><FaMinus/></button>
+                <div className="quantity">{item.quantity}</div>
+                <button className="popup-minus" onClick={() => addItem(item)}><FaPlus/></button>
             </div>
-
             <p>£{(item.quantity * item.price).toFixed(2)}</p>
         </div>
-       
     )
 }
 

@@ -3,6 +3,7 @@ import {MdEmail} from 'react-icons/md'
 import {useState, useEffect} from 'react'
 import {APIEndpoints} from '../config'
 
+
 const ReviewForm = (props) => {
     const {
         setReviewInfo, 
@@ -14,22 +15,32 @@ const ReviewForm = (props) => {
 
     // const [reviews, setReviews] = useState([]);
 
+
+    // useEffect(() => {
+    //     const getReviewData = async() => {
+    //         const res = await fetch(APIEndpoints.review)
+    //         const data = await res.json();
+    //         setReviews(data)
+    //     }
+    //     getReviewData()
+    // }, [])
+
+    // console.log(reviews);
+
     // useEffect(() => {
     //     const postProductReviews = async() => {
-    //         const res = await fetch(`${APIEndpoints.shop}/${product.id}`, {
-    //             method: 'PATCH',
+    //         await fetch(APIEndpoints.review, {
+    //             method: 'POST',
     //             headers: {
     //             "Content-Type": "application/json"
     //             },
-    //             body: JSON.stringify(reviewInfo)
+    //             body: JSON.stringify({productId: product.id , review : reviewInfo})
     //         })
-    //         const data = res.json()
-    //         console.log(data);
     //     }
     //     if(isSubmitReviewForm){
     //         postProductReviews();
     //     }
-    // }, [])
+    // }, [isSubmitReviewForm, product, reviewInfo])
     
     // reviewerName handler =================================
     const reviewerNameHandler = (e) => {
@@ -57,6 +68,15 @@ const ReviewForm = (props) => {
         e.preventDefault();
         let today = new Date().toLocaleDateString();
         setReviewInfo({...reviewInfo, date: today});
+        // const updatedReview = reviews.map(item => {
+        //     if(item.productId === product.id){
+        //         console.log({...item, review : reviewInfo});
+        //         return {...item, review : reviewInfo}
+        //     }else{
+        //         return item
+        //     }
+        // })
+        // setReviews(updatedReview);
         setIsSubmitReviewForm(true);
     }
 

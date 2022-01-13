@@ -1,12 +1,13 @@
 import { AiOutlineLike } from "react-icons/ai";
 
+
 const Review = (props) => {
     const {product, reviewInfo} = props;
     
     let style = {fontSize: '1.5rem', marginRight: '8px'}
 
     return (
-        <div className='review-section'>
+        <div className='review-section' id="review">
             <div className="review">
                 <div className="review-header">
                     <p className="review-header-name">

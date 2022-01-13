@@ -38,6 +38,8 @@ const Shop = () => {
                 filterData.category.includes(el.category) &&
                 el.price <= priceValue){
                 return el
+            }else{
+                return
             }
         })
         console.log('filteredArr', filteredArr);

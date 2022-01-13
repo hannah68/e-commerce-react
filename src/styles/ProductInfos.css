@@ -223,6 +223,7 @@
     background-color: #e9e9e9;
     padding: 2rem;
     border-radius: 5px;
+    margin-bottom: 1rem;
     
 }
 .review-header,
@@ -232,7 +233,7 @@
 }
 
 .review-body{
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
     padding-bottom: 1rem;
 }
 .review-header{
@@ -259,4 +260,30 @@
 
 .review-header-date{
     justify-self: center;
+}
+
+.review-btn-container{
+    width: 140rem;
+    margin: 2rem auto;
+}
+
+.review-btn-container button{
+    cursor: pointer;
+    padding: 1rem;
+    outline: none;
+    text-align: center;
+}
+
+.review-number{
+    text-decoration: underline;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    position: absolute;
+    cursor: pointer;
+    color:blue;
+}
+
+.review-number:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px rgb(139, 139, 139);
 }

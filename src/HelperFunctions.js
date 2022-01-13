@@ -17,6 +17,13 @@ export const randomFnForProducts = (num) => {
     return numIndex;
 }
 
+// create a random review number
+export const randomReviewNum = () => {
+    const min = 28;
+    const max = 350;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // define filter names=======================================
 export const collectionNames = ['Spring-Summer', 'Autumn-Winter'];
 export const colorNames =  ['Pink', 'Blue', 'White', 'Green', 'Beige', 'Black', 'Brown', 'Yellow', 'Grey','Lavender'];
@@ -37,3 +44,27 @@ export const productInfoSize = [
 // creating star icons=======================================
 export const starIcons = [<FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>];
 
+// dummy data for review=====================================
+export const dummyReview = [                 
+    {
+        name: 'Lana Moffat',
+        star: [<FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>],
+        feedback: 'Love the colour and perfect for our apartment really modernises the room. Great little sofa for the price!', 
+        img: '../assets/images/sofa3.jpg',
+        date: '23/12/2021'
+    },
+    {
+        name: 'Keith Leslie',
+        star: [<FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>, <FaStarHalfAlt/>],
+        feedback: 'Love this - easy to assemble and keep clean with two kids around',
+        img: '../assets/images/sofa4.jpg', 
+        date: '09/08/2021'
+    },
+    {
+        name: 'David Mr.d',
+        star : [<FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>, <FaStar/>],
+        feedback: 'Gorgeous perfect size and colour very comfy, super value and looks great!',
+        img: '../assets/images/sofa5.jpg',
+        date: '16/10/2021'
+    }
+]  

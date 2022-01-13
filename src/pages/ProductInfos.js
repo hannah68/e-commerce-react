@@ -1,16 +1,19 @@
 import {useEffect, useState} from 'react'
-import {FaChevronRight, FaChevronLeft, FaRegStar} from "react-icons/fa"
+import {Link} from 'react-scroll'
+import {FaChevronRight, FaRegStar} from "react-icons/fa"
 import ProductInfo from '../components/ProductInfo'
 import {useLocation} from "react-router-dom";
 import {APIEndpoints} from '../config'
 import '../styles/ProductInfos.css'
 import ReviewForm from '../components/ReviewForm';
-import Review from '../components/Review';
-import {randomStar, starIcons} from '../HelperFunctions'
+import {randomStar, starIcons, randomReviewNum} from '../HelperFunctions'
+import DummyReview from '../components/DummyReview';
+import CarouselImages from '../components/CarouselImages';
 
 const ProductInfos = (props) => {
     const {shoppingCart, setShoppingCart} = props;
     const [submit, setSubmit] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
     const [isSubmitReviewForm, setIsSubmitReviewForm] = useState(false);
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(0);
@@ -27,15 +30,13 @@ const ProductInfos = (props) => {
         ],
         feedback:'',
         date: '',
-        productId: null
-    })
+    });
 
     const location = useLocation();
-
-    const style = { fontSize: "2rem" }
+    const btnStyle = {fontSize: '1.5rem', marginLeft: '8px'}
 
     
-    // use effect for accessing data from location============
+    // use effect for accessing data from location=======================
     useEffect(() => {
         if (location.state) {
             const { item } = location.state;
@@ -43,7 +44,24 @@ const ProductInfos = (props) => {
         }
     }, [location]);
 
-    // use effect for posting data to basket=================
+    // use effect for update quantity of product in basket================
+    useEffect(() => {
+        const updateBasketData = async () => {
+            await fetch(`${APIEndpoints.basket}/${product.id}`, {
+                method: 'PATCH',
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(product)
+            })
+        }
+        if(isEdited){
+            updateBasketData();
+        }
+        setIsEdited(false);
+    }, [isEdited, product])
+
+    // use effect for posting data to basket===============================
     useEffect(() => {
         const postBasketData = async () => {
             await fetch(APIEndpoints.basket, {
@@ -51,18 +69,17 @@ const ProductInfos = (props) => {
                 headers: {
                 "Content-Type": "application/json"
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify({...product, quantity: quantity})
             })
         }
         if(submit){
             postBasketData()
-            console.log('submit');
         }
         setSubmit(false);
         setQuantity(0);
     }, [submit, product])
 
-
+    // add item to basket handler ========================================
     const addToBasketHandler = (product) => {
         const existedItem = shoppingCart.find(el => el.id === product.id);
         if(existedItem){
@@ -76,14 +93,11 @@ const ProductInfos = (props) => {
                 } 
             })
             setShoppingCart(updatedArr);
-            setSubmit(true);
+            setIsEdited(true);
         }else{
-            setShoppingCart([...shoppingCart, {...product, quantity : Number(quantity)}])
             setSubmit(true);
         }
     }
-
-    console.log('product', product);
 
     // quantity handler ====================
     const quantityHandler = (e) => {
@@ -91,7 +105,7 @@ const ProductInfos = (props) => {
     }
 
     // review handler ======================
-    const reviewHandler = () => {
+    const writeReviewHandler = () => {
         setIsReview(true);
     }
 
@@ -100,22 +114,24 @@ const ProductInfos = (props) => {
             <section className="product-item">
                 <div className="productImg-container">
                     <img src={`.${product.img}`} alt={product.title}/>
-                    <div className="small-images">
-                        <span className="arrow-left"><FaChevronLeft style={style}/></span>
-                        <img src="../assets/images/sofa2.jpg" alt="sofa"/>
-                        <img src="../assets/images/table3.jpg" alt="sofa"/>
-                        <img src="../assets/images/sofa1.jpg" alt="sofa"/>
-                        <img src="../assets/images/table5.jpg" alt="sofa"/>
-                        <span className="arrow-right"><FaChevronRight style={style}/></span>
-                    </div>
+                    <CarouselImages/>
                 </div>
                 <div className="productInfo-container">
                     <h2 className="productInfo-title">{product.title}</h2>
-                    <div className="stars" onClick={reviewHandler}>
+                    <div className="stars">
                         {starIcons.map((star, index) => {
                             return <span key={index}>{star}</span>
                         })}
                         <span>{randomStar()}</span>
+                        {/* react-scroll */}
+                        <Link 
+                            to="review"
+                            spy={true}
+                            smooth={true}
+                            className='review-number'
+                            >
+                                {randomReviewNum()}Reviews
+                        </Link>
                     </div>
                     <h3 className="productInfo-price">£{product.price}</h3>
                     <ProductInfo/>
@@ -135,16 +151,24 @@ const ProductInfos = (props) => {
                 </div>
             </section>
 
+            <DummyReview 
+                product={product} 
+                isSubmitReviewForm={isSubmitReviewForm}
+                reviewInfo={reviewInfo}
+            />
+            <div className="review-btn-container">
+                <button onClick={writeReviewHandler}>Write a review<FaChevronRight style={btnStyle}/></button>
+            </div>
+            
+
             {isReview && !isSubmitReviewForm && <ReviewForm 
                 product={product} 
                 setReviewInfo={setReviewInfo}
                 reviewInfo={reviewInfo}
                 setIsSubmitReviewForm={setIsSubmitReviewForm}
                 isSubmitReviewForm={isSubmitReviewForm}
-                product={product}
             />}
-            {isSubmitReviewForm && <Review 
-                reviewInfo={reviewInfo} product={product}/>}
+            
         </div>
     )
 }
