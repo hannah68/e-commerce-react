@@ -11,7 +11,7 @@ const FilterPrice = (props) => {
                     id="min-price" 
                     name="min-price" 
                     min={0} 
-                    max='1000' 
+                    max='8' 
                     step='10'
                 />
                 <input 
