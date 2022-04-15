@@ -2,6 +2,7 @@ import {FaStar, FaUser, FaPen } from 'react-icons/fa'
 import {MdEmail} from 'react-icons/md'
 import {useState, useEffect} from 'react'
 import {APIEndpoints} from '../config'
+import StarRating from './StarRating'
 
 
 const ReviewForm = (props) => {
@@ -10,7 +11,11 @@ const ReviewForm = (props) => {
         reviewInfo, 
         isSubmitReviewForm, 
         setIsSubmitReviewForm,
-        product
+        product,
+        rating,
+        setRating,
+        hover,
+        setHover,
     } = props;
 
     // const [reviews, setReviews] = useState([]);
@@ -107,18 +112,12 @@ const ReviewForm = (props) => {
                 </div>
                 <div className="rating">
                     <p>Rate our overall services.</p>
-                    <div className="stars review-stars">
-                        {reviewInfo.stars.map(star => {
-                            return (
-                                <span 
-                                    key={star.id} 
-                                    onClick={() => changeStarHandler(star)}
-                                    >
-                                    {star.name}
-                                </span>
-                            )
-                        })}
-                    </div>
+                    <StarRating
+                        rating={rating}
+                        setRating={setRating}
+                        hover={hover}
+                        setHover={setHover}
+                    />
                 </div>
 
                 <div className="feedback">

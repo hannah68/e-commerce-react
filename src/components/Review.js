@@ -2,7 +2,7 @@ import { AiOutlineLike } from "react-icons/ai";
 
 
 const Review = (props) => {
-    const {product, reviewInfo} = props;
+    const {product, reviewInfo, hover, rating} = props;
     
     let style = {fontSize: '1.5rem', marginRight: '8px'}
 
@@ -14,7 +14,7 @@ const Review = (props) => {
                         {reviewInfo.reviewerName}
                     </p>
                     <p className="review-header-star">
-                        {reviewInfo.stars.map(el => el.name)}
+                        {reviewInfo.stars}
                     </p>
                     <p className="review-header-date">
                         {reviewInfo.date}
