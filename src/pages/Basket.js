@@ -1,10 +1,11 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import '../styles/Basket.css'
 import { useNavigate } from "react-router-dom";
 import {APIEndpoints} from '../config'
 import CartItem from '../components/CartItem';
 import EmptyBasket from '../components/EmptyBasket';
 import TotalCart from '../components/TotalCart';
+import { StoreContext, StoreActions } from '../Store';
 
 
 const Basket = (props) => {
@@ -14,6 +15,14 @@ const Basket = (props) => {
     const [product, setProduct] = useState({});
     const [isEdited, setIsEdited] = useState(false);
     let navigate = useNavigate();
+    const store = useContext(StoreContext);
+
+    const doDispatch = (type, payload) => {
+        store.dispatch({
+          type: type,
+          payload: payload,
+        });
+      };
 
     // get data from basket (json server)=====================
     useEffect(() => {
@@ -27,7 +36,7 @@ const Basket = (props) => {
 
     // add more items to cart ================================
     const addItem = (item) => {
-        const updatedArr = shoppingCart.map(el => {
+        const me = store.state.shoppingCart.map(el => {
             if(el.id === item.id){
                 setProduct({...el, quantity: Number(el.quantity) + 1})
                 return {...el, quantity: Number(el.quantity) + 1}
@@ -35,7 +44,18 @@ const Basket = (props) => {
                 return el
             }
         })
-        setShoppingCart(updatedArr);
+        console.log(me);
+        // const updatedArr = shoppingCart.map(el => {
+        //     if(el.id === item.id){
+        //         setProduct({...el, quantity: Number(el.quantity) + 1})
+        //         return {...el, quantity: Number(el.quantity) + 1}
+        //     }else{
+        //         return el
+        //     }
+        // })
+        doDispatch(StoreActions.UPDATE_SHOPPINGCART, me)
+        // setShoppingCart(me);
+        // setShoppingCart(updatedArr);
         setIsEdited(true);
     }
 
@@ -60,7 +80,7 @@ const Basket = (props) => {
         } 
     }
 
-    
+    console.log(shoppingCart)
     // use effect for updating basket quantity======================
     useEffect(() => {
         const updateBasketData = async () => {

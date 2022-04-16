@@ -35,7 +35,7 @@ const ProductInfos = (props) => {
     const location = useLocation();
     const btnStyle = {fontSize: '1.5rem', marginLeft: '8px'}
 
-    
+    console.log('shopping cart', shoppingCart);
     // use effect for accessing data from location=======================
     useEffect(() => {
         if (location.state) {
