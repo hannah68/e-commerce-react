@@ -1,23 +1,26 @@
-import '../styles/Home.css';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+
+import "../styles/Home.css";
 
 const HeroSection = () => {
-    return (
-        <section className="hero-section">
-            <div className="hero-section__text">
-                <div className="hero-container">
-                    <h1 className="hero-section__text--title">
-                            The unique furniture for your special house
-                    </h1>
+	return (
+		<section className="hero-section">
+			<div className="hero-section__text">
+				<div className="hero-container">
+					<h1 className="hero-section__text--title">
+						The unique furniture for your special house
+					</h1>
 
-                    <Link to='/products' className="hero-section__text--btn">Shop Now</Link>
-                </div>
-            </div>
-            <div className="hero-section__img">
-                <img src="./assets/images/chair1.jpg" alt="chair"/>
-            </div>
-        </section>
-    )
-}
+					<Link to="/products" className="hero-section__text--btn">
+						Shop Now
+					</Link>
+				</div>
+			</div>
+			<div className="hero-section__img">
+				<img src="./assets/images/chair1.jpg" alt="chair" />
+			</div>
+		</section>
+	);
+};
 
-export default HeroSection
+export default HeroSection;

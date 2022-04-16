@@ -1,30 +1,36 @@
-import FeatureSection from '../components/FeatureSection';
-import HeroSection from '../components/HeroSection';
-import '../styles/Home.css';
 import { useState, useEffect } from "react";
-import {APIEndpoints} from '../config';
+
+import FeatureSection from "../components/FeatureSection";
+import HeroSection from "../components/HeroSection";
+
+import "../styles/Home.css";
+
+import { APIEndpoints } from "../config";
 
 const Home = () => {
-    const [featuredItems, setFeaturedItems] = useState([]);
+	const [featuredItems, setFeaturedItems] = useState([]);
 
-    // use effect for fetching featured item from json====================
-    useEffect(() => {
-        const fetchFeaturedItems = async () => {
-            const res = await fetch(APIEndpoints.shop);
-            const data = await res.json();
-            const cleanData = data.filter(item => item.feature === true) ;
-            setFeaturedItems(cleanData);
-        }
-        fetchFeaturedItems()
-    }, [])
+	// use effect for fetching featured item from json====================
+	useEffect(() => {
+		try {
+			const fetchFeaturedItems = async () => {
+				const res = await fetch(APIEndpoints.shop);
+				const data = await res.json();
+				const cleanData = data.filter((item) => item.feature === true);
+				setFeaturedItems(cleanData);
+			};
+			fetchFeaturedItems();
+		} catch (error) {
+			console.log("could not fetch featured items from db file!");
+		}
+	}, []);
 
-
-    return (
-        <div className="home-section">
-            <HeroSection/>
-            <FeatureSection featuredItems={featuredItems}/>
-        </div>
-    )
-}
+	return (
+		<div className="home-section">
+			<HeroSection />
+			<FeatureSection featuredItems={featuredItems} />
+		</div>
+	);
+};
 
 export default Home;
