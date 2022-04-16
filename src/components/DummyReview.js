@@ -8,7 +8,7 @@ const DummyReview = (props) => {
 	const { product, isSubmitReviewForm, reviewInfo } = props;
 
 	return (
-		<div className="review-section" id="review">
+		<div className="review-section">
 			{dummyReview.map((el, index) => {
 				return (
 					<div className="review" key={index}>
