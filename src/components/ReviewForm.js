@@ -81,8 +81,6 @@ const ReviewForm = (props) => {
 							<FaPen />
 						</span>
 						<textarea
-							cols="76"
-							rows="5"
 							name="feedback"
 							value={reviewInfo.feedback}
 							onChange={changeHandler}

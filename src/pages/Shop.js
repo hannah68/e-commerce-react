@@ -41,14 +41,12 @@ const Shop = () => {
 	const submitFilterFormHandler = (e) => {
 		e.preventDefault();
 		const filteredArr = products.filter((el) => {
-			if (
+			return (
 				filterData.collection.includes(el.collection) &&
 				filterData.color.includes(el.color) &&
 				filterData.category.includes(el.category) &&
 				el.price <= priceValue
-			) {
-				return el;
-			}
+			);
 		});
 		setRandomProducts(filteredArr);
 	};
