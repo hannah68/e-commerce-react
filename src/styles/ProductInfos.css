@@ -77,8 +77,21 @@
     cursor: pointer;
 }
 
+.carouselStyle{
+    font-size: 2rem;
+}
+
+.likeStyle{
+    font-size: 1.5rem;
+     margin-right: 8px;
+}
 .stars span{
     cursor: pointer;
+}
+
+.btnStyle{
+    font-size: 1.5rem;
+    margin-left: 8px;
 }
 
 .Blue{

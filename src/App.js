@@ -10,6 +10,8 @@ import Basket from "./pages/Basket";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
+import { PAGE_LINK } from "./config";
+
 const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]); 
 
@@ -18,15 +20,15 @@ const App = () => {
       <Header shoppingCart={shoppingCart}/>
       <main>
         <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/products' element={<Shop/>}/>
-              <Route path='/products/:id' element={<ProductInfos 
+              <Route path={PAGE_LINK.home} element={<Home/>}/>
+              <Route path={PAGE_LINK.shop} element={<Shop/>}/>
+              <Route path={`${PAGE_LINK.shop}/:id`} element={<ProductInfos 
                 shoppingCart={shoppingCart} 
                 setShoppingCart={setShoppingCart}
               />}/>
-              <Route path='/about' element={<About/>}/>
-              <Route path='/contact' element={<Contact/>}/>
-              <Route path='/basket' element={<Basket 
+              <Route path={PAGE_LINK.about} element={<About/>}/>
+              <Route path={PAGE_LINK.contact} element={<Contact/>}/>
+              <Route path={PAGE_LINK.basket} element={<Basket 
                 shoppingCart={shoppingCart}
                 setShoppingCart={setShoppingCart}
               />}/>

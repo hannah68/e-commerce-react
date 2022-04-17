@@ -4,6 +4,8 @@ import "../styles/Home.css";
 
 import { randomStar, starIcons } from "../utils";
 
+import { PAGE_LINK } from "../config";
+
 const FeaturedItem = (props) => {
 	const { item } = props;
 
@@ -21,7 +23,7 @@ const FeaturedItem = (props) => {
 					</div>
 					<p>£{item.price}</p>
 				</div>
-				<Link to={`/products/${item.id}`} state={{ item }}>
+				<Link to={`${PAGE_LINK.shop}/${item.id}`} state={{ item }}>
 					<button className="sub-img__btn">more details</button>
 				</Link>
 			</div>

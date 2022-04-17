@@ -4,6 +4,8 @@ import "../styles/Shop.css";
 
 import { randomStar, starIcons } from "../utils";
 
+import { PAGE_LINK } from "../config";
+
 const Product = (props) => {
 	const { item } = props;
 
@@ -22,7 +24,7 @@ const Product = (props) => {
 			</div>
 			<Link
 				className="product__btn"
-				to={`/products/${item.id}`}
+				to={`${PAGE_LINK.shop}/${item.id}`}
 				state={{ item }}
 			>
 				More details

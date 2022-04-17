@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/Basket.css";
 
-import { APIEndpoints } from "../config";
+import { APIEndPoints, PAGE_LINK } from "../config";
 
 import CartItem from "../components/CartItem";
 import EmptyBasket from "../components/EmptyBasket";
@@ -20,7 +20,7 @@ const Basket = (props) => {
 	// get data from basket (json server)=====================
 	useEffect(() => {
 		const getBasketData = async () => {
-			const res = await fetch(APIEndpoints.basket);
+			const res = await fetch(APIEndPoints.basket);
 			const data = await res.json();
 			setShoppingCart(data);
 		};
@@ -64,7 +64,7 @@ const Basket = (props) => {
 	// use effect for updating basket quantity======================
 	useEffect(() => {
 		const updateBasketData = async () => {
-			await fetch(`${APIEndpoints.basket}/${product.id}`, {
+			await fetch(`${APIEndPoints.basket}/${product.id}`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
@@ -90,10 +90,10 @@ const Basket = (props) => {
 	// delete item from json server============================
 	useEffect(() => {
 		const deleteItemFromBasket = async () => {
-			await fetch(`${APIEndpoints.basket}/${deletedItem.id}`, {
+			await fetch(`${APIEndPoints.basket}/${deletedItem.id}`, {
 				method: "DELETE",
 			});
-			navigate("/basket", { replace: true });
+			navigate(PAGE_LINK.basket, { replace: true });
 		};
 		if (deletedItem) {
 			deleteItemFromBasket();

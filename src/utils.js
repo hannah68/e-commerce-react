@@ -84,10 +84,6 @@ export const dummyReview = [
 	},
 ];
 
-export const carouselStyle = { fontSize: "2rem" };
-export const likeStyle = { fontSize: "1.5rem", marginRight: "8px" };
-export const btnStyle = { fontSize: "1.5rem", marginLeft: "8px" };
-
 // star making function =============================================
 export const starMaking = (num) => {
 	const fillStar = num;

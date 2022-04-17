@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { PAGE_LINK } from "../config";
+
 import "../styles/Home.css";
 
 const HeroSection = () => {
@@ -11,7 +13,7 @@ const HeroSection = () => {
 						The unique furniture for your special house
 					</h1>
 
-					<Link to="/products" className="hero-section__text--btn">
+					<Link to={PAGE_LINK.shop} className="hero-section__text--btn">
 						Shop Now
 					</Link>
 				</div>

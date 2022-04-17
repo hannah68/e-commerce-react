@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
-import { APIEndpoints } from "../config";
+import { APIEndPoints } from "../config";
 
 import "../styles/ProductInfos.css";
 
 import ReviewForm from "../components/ReviewForm";
 import DummyReview from "../components/DummyReview";
 import ProductDetails from "../components/ProductDetails";
-
-import { btnStyle } from "../utils";
 
 export const initialReviewInfos = {
 	reviewerName: "",
@@ -48,7 +46,7 @@ const ProductInfos = (props) => {
 	// use effect for update quantity of product in basket================
 	useEffect(() => {
 		const updateBasketData = async () => {
-			await fetch(`${APIEndpoints.basket}/${product.id}`, {
+			await fetch(`${APIEndPoints.basket}/${product.id}`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
@@ -65,7 +63,7 @@ const ProductInfos = (props) => {
 	// use effect for posting data to basket===============================
 	useEffect(() => {
 		const postBasketData = async () => {
-			await fetch(APIEndpoints.basket, {
+			await fetch(APIEndPoints.basket, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -145,7 +143,7 @@ const ProductInfos = (props) => {
 			<div className="review-btn-container">
 				<button onClick={writeReviewHandler} id="review">
 					Write a review
-					<FaChevronRight style={btnStyle} />
+					<FaChevronRight className="btnStyle" />
 				</button>
 			</div>
 		</div>

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
+import { PAGE_LINK } from "../config";
+
 import "../styles/Footer.css";
 
 const Footer = () => {
@@ -13,17 +15,17 @@ const Footer = () => {
 
 				<ul className="footer__lists">
 					<li className="footer__lists--item">
-						<Link to="/" className="disabled-link">
+						<Link to={PAGE_LINK.home} className="disabled-link">
 							Information
 						</Link>
 					</li>
 					<li className="footer__lists--item">
-						<Link to="/" className="disabled-link">
+						<Link to={PAGE_LINK.home}className="disabled-link">
 							Customer service
 						</Link>
 					</li>
 					<li className="footer__lists--item">
-						<Link to="/contact">Contact</Link>
+						<Link to={PAGE_LINK.contact}>Contact</Link>
 					</li>
 				</ul>
 

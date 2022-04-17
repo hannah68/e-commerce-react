@@ -6,7 +6,7 @@ import SearchShop from "../components/SearchShop";
 
 import "../styles/Shop.css";
 
-import { APIEndpoints } from "../config";
+import { APIEndPoints } from "../config";
 
 import { randomFnForProducts } from "../utils";
 
@@ -106,7 +106,7 @@ const Shop = () => {
 	// use effect for fetching products and displaying on screen==================
 	useEffect(() => {
 		const fetchProducts = async () => {
-			const res = await fetch(APIEndpoints.shop);
+			const res = await fetch(APIEndPoints.shop);
 			const data = await res.json();
 			// uncleaned data/ all products
 			setProducts(data);

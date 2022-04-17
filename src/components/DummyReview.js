@@ -2,7 +2,9 @@ import { AiOutlineLike } from "react-icons/ai";
 
 import Review from "../components/Review";
 
-import { likeStyle, dummyReview } from "../utils";
+import {dummyReview } from "../utils";
+
+import '../styles/ProductInfos.css';
 
 const DummyReview = (props) => {
 	const { product, isSubmitReviewForm, reviewInfo } = props;
@@ -30,7 +32,7 @@ const DummyReview = (props) => {
 							<p className="review-body-text">{el.feedback}</p>
 							<button className="review-body-btn">
 								<span>
-									<AiOutlineLike style={likeStyle} />
+									<AiOutlineLike className="likeStyle" />
 								</span>
 								helpful
 							</button>

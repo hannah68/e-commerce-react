@@ -5,7 +5,7 @@ import HeroSection from "../components/HeroSection";
 
 import "../styles/Home.css";
 
-import { APIEndpoints } from "../config";
+import { APIEndPoints } from "../config";
 
 const Home = () => {
 	const [featuredItems, setFeaturedItems] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
 	useEffect(() => {
 		try {
 			const fetchFeaturedItems = async () => {
-				const res = await fetch(APIEndpoints.shop);
+				const res = await fetch(APIEndPoints.shop);
 				const data = await res.json();
 				const cleanData = data.filter((item) => item.feature === true);
 				setFeaturedItems(cleanData);

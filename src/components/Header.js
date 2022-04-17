@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
+import { PAGE_LINK } from "../config";
+
 import "../styles/Header.css";
 
 const Header = (props) => {
@@ -13,28 +15,28 @@ const Header = (props) => {
 			<nav className="navbar-container">
 				<div className="navbar">
 					<div className="navbar__logo">
-						<Link to="/">
+						<Link to={PAGE_LINK.home}>
 							<img src="../assets/images/logo.svg" alt="logo" />
 						</Link>
 					</div>
 
 					<ul className="navbar__lists">
 						<li className="navbar__lists--item">
-							<Link to="/">Home</Link>
+							<Link to={PAGE_LINK.home}>Home</Link>
 						</li>
 						<li className="navbar__lists--item">
-							<Link to="/about">About</Link>
+							<Link to={PAGE_LINK.about}>About</Link>
 						</li>
 						<li className="navbar__lists--item">
-							<Link to="/products">Shop</Link>
+							<Link to={PAGE_LINK.shop}>Shop</Link>
 						</li>
 						<li className="navbar__lists--item">
-							<Link to="/contact">Contact</Link>
+							<Link to={PAGE_LINK.contact}>Contact</Link>
 						</li>
 					</ul>
 
 					<div className="navbar__icon">
-						<Link to="/basket">
+						<Link to={PAGE_LINK.basket}>
 							<div className={className}>{shoppingCart.length}</div>
 							<span>
 								<FaShoppingCart />
