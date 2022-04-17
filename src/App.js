@@ -1,17 +1,16 @@
-import { Route, Routes } from "react-router"
-import {useState} from 'react'
-import Home from './pages/Home'
-import Shop from './pages/Shop'
-import Contact from './pages/Contact'
-import ProductInfos from "./pages/ProductInfos"
-import About from './pages/About'
-import Basket from "./pages/Basket"
+import { Route, Routes } from "react-router";
+import {useState} from 'react';
+
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Contact from './pages/Contact';
+import ProductInfos from "./pages/ProductInfos";
+import About from './pages/About';
+import Basket from "./pages/Basket";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-
-
-function App() {
+const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]); 
 
   return (
