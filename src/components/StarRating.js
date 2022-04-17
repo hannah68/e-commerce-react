@@ -4,8 +4,7 @@ import "../styles/ProductInfos.css";
 
 const StarRating = (props) => {
 	const { rating, setRating, hover, setHover } = props;
-
-	console.log(rating);
+	
 	return (
 		<div className="stars review-stars">
 			{/* create an array with 5 places */}
