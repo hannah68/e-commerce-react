@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# WoodLand
+> WoodLand is a fully responsive e-commerce furniture website.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./public/assets/images/woodland.gif' width="600px"/>
 
-## Available Scripts
+## Description
+After learning react during the Boolean's bootcamp, we had to do a solo project with react. I was always curious how e-commerce websites were built. Hence, I challenged myself to create one in less than a week. I decided to create a furniture online store because of my passion for interior design.
 
-In the project directory, you can run:
+## Features
+The user has the ability to:
+- See the best seller furniture on the home page
+- Filter products based on their type, color, collection and price
+- Search products and sort them based on the highest or the lowest price
+- Check the details of products
+- Add items to basket
+- Edit the basket(removing or adding more items)
+- Write reviews 
 
-### `npm start`
+## Lesson Learned
+During my projects I learned how to:
+- navigate UI with react-router
+- Transfer state between routes with useNavigate
+- work with useLocation to get the necessary information about the current route
+- remove the side effect of fetching my data from API endpoints by using useEffect
+- Apply JSON-server to connect my database with the frontend by creating RESTAPI(with CRUD operation)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I got a really good grasp of array methods such as map, filter, reduce, sort,.. by doing this project.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Tech Stack
+- Applied figma to design <a href="https://www.figma.com/file/AQ7tZRnMHqPFyOhUmfWrsi/furniture?node-id=0%3A1">my wireframe</a>
+- HTML, CSS, Javascript
+- React (Ract-router, useState, useEffect, React-icons,...)
+- REST API (JSON server)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future development
+1. As a general optimization throughout my code, I would use the global state to avoid the props drilling and use Usereducer so don't have to pass down multiple functions but only one reducer that results in better performance and sustain a more maintainable state.
+2. I would implement MySQL or MongoDB for my database.
+3. Users should be able to register on the website to keep track of the items that were added to the basket and write reviews.
