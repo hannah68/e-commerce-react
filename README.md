@@ -16,16 +16,15 @@ The user has the ability to:
 - Edit the basket(removing or adding more items)
 - Write reviews 
 
-## Lesson Learned
-During my projects I learned how to:
+## Lessons Learned
+During this project, I learned how to:
 - navigate UI with react-router
-- Transfer state between routes with useNavigate
-- work with useLocation to get the necessary information about the current route
-- remove the side effect of fetching my data from API endpoints by using useEffect
-- Apply JSON-server to connect my database with the frontend by creating RESTAPI(with CRUD operation)
+- Transfer states between routes with useNavigate
+- Work with useLocation to get the necessary information about the current route
+- Remove the side effect of fetching data from API endpoints by using useEffect
+- Apply JSON-server to connect database with the frontend via creating RESTAPI (with CRUD operation)
 
-I got a really good grasp of array methods such as map, filter, reduce, sort,.. by doing this project.
-
+As a result of doing this project, I developed a deep understanding of array methods such as map, filter, reduce, sort, etc.
 
 ## Tech Stack
 - Applied figma to design <a href="https://www.figma.com/file/AQ7tZRnMHqPFyOhUmfWrsi/furniture?node-id=0%3A1">my wireframe</a>
@@ -36,6 +35,6 @@ I got a really good grasp of array methods such as map, filter, reduce, sort,.. 
 ## Installation
 
 ## Future development
-1. As a general optimization throughout my code, I would use the global state to avoid the props drilling and use Usereducer so don't have to pass down multiple functions but only one reducer that results in better performance and sustain a more maintainable state.
+1. As a general optimization throughout my code, I would use the global state to prevent the props drilling. Moreover, I will use UseReducer to obtain better performance and sustain a more maintainable state.
 2. I would implement MySQL or MongoDB for my database.
 3. Users should be able to register on the website to keep track of the items that were added to the basket and write reviews.
