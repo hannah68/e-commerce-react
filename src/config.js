@@ -1,11 +1,11 @@
 
 export const APIEndPoints = {
-	home: "http://localhost:3030",
-	about: "http://localhost:3030/about",
-	shop: "http://localhost:3030/products",
-	basket: "http://localhost:3030/basket",
-	contact: "http://localhost:3030/contact",
-	review: "http://localhost:3030/reviews",
+	home: "http://localhost:3000",
+	about: "http://localhost:3000/about",
+	shop: "http://localhost:3000/products",
+	basket: "http://localhost:3000/basket",
+	contact: "http://localhost:3000/contact",
+	review: "http://localhost:3000/reviews",
 };
 
 export const PAGE_LINK = {
