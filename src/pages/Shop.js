@@ -60,9 +60,7 @@ const Shop = () => {
 	const submitSearchHandler = (e) => {
 		e.preventDefault();
 		const filteredData = products.filter((el) => {
-			if (el.category === searchValue || el.title === searchValue) {
-				return el;
-			}
+			return el.category === searchValue || el.title === searchValue
 		});
 		setRandomProducts(filteredData);
 		setSearchValue("");

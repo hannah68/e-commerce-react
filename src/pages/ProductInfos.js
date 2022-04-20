@@ -76,6 +76,7 @@ const ProductInfos = (props) => {
 		}
 		setSubmit(false);
 		setQuantity(0);
+		// eslint-disable-next-line
 	}, [submit, product]);
 
 	// add item to basket handler ========================================
